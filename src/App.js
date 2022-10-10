@@ -1,23 +1,22 @@
-import logo from './logo.svg';
+import { Route, Routes } from 'react-router-dom';
 import './App.css';
+import Error from './pages/Error/Error';
+import Favorites from './pages/favorites/Favorites';
+import Gif from './pages/gif/Gif';
+import Home from './pages/home/Home';
+import Login from './pages/login/Login';
 
+// FUNCION APP QUE CONTENDRA TODAS LAS RUTAS
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Routes>
+        <Route index path="/" element={<Home/>} />
+        <Route path='/login' element={<Login/>} />
+        <Route path='/favorites' element={<Favorites/>} />
+        <Route path='/:id' element={<Gif/>} />
+        <Route path='*' element={<Error/>} />
+      </Routes>
     </div>
   );
 }
