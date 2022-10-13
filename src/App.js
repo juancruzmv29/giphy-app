@@ -1,7 +1,8 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import Navbar from "./components/Navbar/Navbar";
-import { UserContext } from "./context/UserContext";
+import { GifsContextProvider } from "./context/GifsContext";
+import { UserContextProvider } from "./context/UserContext";
 import Error from "./pages/Error/Error";
 import Favorites from "./pages/favorites/Favorites";
 import Gif from "./pages/gif/Gif";
@@ -12,19 +13,21 @@ import Register from "./pages/register/Register";
 // FUNCION APP QUE CONTENDRA TODAS LAS RUTAS
 function App() {
   return (
-    <div className="App">
-      <UserContext>
+    <UserContextProvider>
+      <div className="App">
         <Navbar />
-        <Routes>
-          <Route index path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register/>} />
-          <Route path="/favorites" element={<Favorites />} />
-          <Route path="/:id" element={<Gif />} />
-          <Route path="*" element={<Error />} />
-        </Routes>
-      </UserContext>
-    </div>
+        <GifsContextProvider>
+          <Routes>
+            <Route index path="/" element={<Home />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/favorites" element={<Favorites />} />
+            <Route path="/:id" element={<Gif />} />
+            <Route path="*" element={<Error />} />
+          </Routes>
+        </GifsContextProvider>
+      </div>
+    </UserContextProvider>
   );
 }
 

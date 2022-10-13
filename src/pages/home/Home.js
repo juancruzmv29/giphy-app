@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import Title from '../../components/Title/Title'
+import "./Home.scss"
 
 // PÁGINA DEL HOME DONDE APARACERAN TODOS LOS GIFS, Y LAS TENDENCIAS Y TAMBIEN DONDE PODREMOS BUSCAR GIFS
 const Home = () => {

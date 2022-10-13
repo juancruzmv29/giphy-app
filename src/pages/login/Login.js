@@ -1,8 +1,10 @@
 import React, { useContext, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Button from "../../components/Button/Button";
 import Title from "../../components/Title/Title";
 import { UserContext } from "../../context/UserContext";
+import "./Login.scss"
+import logo from "../../assets/logo.png"
 
 // PÁGINA DONDE NOS VAMOS A PODER LOGUEAR CON NUESTRO EMAIL O POR GITHUB O GOOGLE o APPLE
 const Login = () => {
@@ -50,7 +52,7 @@ const Login = () => {
   };
 
   return (
-    <div>
+    <div className="container">
       <Title title="Login" />
 
       <form onSubmit={handleLoginEmail}>
@@ -74,14 +76,10 @@ const Login = () => {
       <span>O ingresa desde tu cuenta de Google</span>
 
       <button className="button_google" onClick={handleLoginGoogle}>
-        <h3>Ingresa desde tu cuenta de Google</h3>
-        <img alt="Google" />
+        <h3>Ingresa desde Google</h3>
+        <img className="logo" src={logo} alt="Google" />
       </button>
 
-
-      <Link to="/register" >
-        <span>Registrase clickeando este link</span>
-      </Link>
     </div>
   );
 };

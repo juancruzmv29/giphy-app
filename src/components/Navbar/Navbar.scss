@@ -1,0 +1,18 @@
+.navbar {
+
+    display: flex;
+    justify-content: center;
+    font-size: 1.5rem;
+    text-align: center;
+    gap: 1.5rem;
+    font-family: 'Montserrat', sans-serif;
+    .navbar_link {
+        text-decoration: none;
+        color: #fff;
+        transition: all ease .2s;
+
+        &:hover {
+            color: rgba(255, 255, 255, 0.555);
+        }
+    }
+}

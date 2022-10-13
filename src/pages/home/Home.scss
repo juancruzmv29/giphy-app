@@ -1,0 +1,14 @@
+form {
+    display: flex;
+    justify-content: center;
+
+
+    input {
+        padding: .3rem .6rem;
+        border-radius: 30px;
+        color: black;
+        outline: none;
+        font-size: 1.1rem;
+        border: 1px solid grey;
+    }
+}

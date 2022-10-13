@@ -1,4 +1,5 @@
 import React from 'react'
+import "./Title.scss"
 
 // COMPONENTE DE TITULO
 const Title = ({ title }) => {

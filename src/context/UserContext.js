@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { createUserWithEmailAndPassword, getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth"
+import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth"
 import { createContext, useContext, useEffect, useState } from "react"
+import { auth } from "../firebase/client"
 
 // CONTEXTO DONDE VAMOS A EXPORTAR LAS FUNCIONES DEL LOGIN 
 export const UserContext = createContext()
@@ -22,7 +23,6 @@ export const UserContextProvider = ({ children }) => {
     const [user, setUser] = useState(null)
     const [loading, setLoading] = useState(false)
 
-    const auth = getAuth()
     const provider = new GoogleAuthProvider()
     provider.addScope('https://www.googleapis.com/auth/contacts.readonly')
 
@@ -74,4 +74,3 @@ export const UserContextProvider = ({ children }) => {
 
 }
 
-export default UserContextProvider

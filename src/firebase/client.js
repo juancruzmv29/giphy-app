@@ -1,25 +1,28 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore/lite"
-import { getAuth } from "firebase/auth"
+import { getAuth } from "firebase/auth";
+
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyCwMgiPw-HE35r3FL4DkNBNIHv1ym3h9yY",
-  authDomain: "giphy-app-1aef3.firebaseapp.com",
-  projectId: "giphy-app-1aef3",
-  storageBucket: "giphy-app-1aef3.appspot.com",
-  messagingSenderId: "1047857717858",
-  appId: "1:1047857717858:web:c87a631dcabf04ec96273b"
+  apiKey: "AIzaSyC35OYNidDW7GM2uaAL8A0Lf8cZW480iqg",
+  authDomain: "giphy-app-e558d.firebaseapp.com",
+  projectId: "giphy-app-e558d",
+  storageBucket: "giphy-app-e558d.appspot.com",
+  messagingSenderId: "67476358308",
+  appId: "1:67476358308:web:f73e6b4531931a8a055231"
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig)
-// Inicializamos la db
-const db = getFirestore(app)
+const app = initializeApp(firebaseConfig);
 // Inicializamos la auth
 const auth = getAuth(app)
+// Inicializamos la db
+// const db = getFirestore(app)
+
 
 // Exportamos la auth y la db
-export { auth, db }
+export { auth }
 

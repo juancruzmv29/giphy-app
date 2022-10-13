@@ -1,8 +1,9 @@
 import React, { useContext, useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import Button from '../../components/Button/Button'
 import Title from '../../components/Title/Title'
 import { UserContext } from '../../context/UserContext'
+import "./Register.scss"
 
 // PÁGINA DONDE VAMOS A PODER REGISTRARNOS
 const Register = () => {
@@ -35,18 +36,14 @@ const Register = () => {
 
 
   return (
-    <div>
+    <div className='container'>
         <Title title="Registrarse" />
 
         <form onSubmit={handleSubmitRegister} >
-            <input type="text" onChange={handleEmailChange} value={email} />
-            <input type="password" onChange={handlePassChange} value={password} />
+            <input type="text" onChange={handleEmailChange} value={email} placeholder="Ingresa tu email" />
+            <input type="password" onChange={handlePassChange} value={password} placeholder="Ingresa tu contraseña" />
             <Button text="Registrarse" />
         </form>
-
-        <Link to="/login">
-            <span>Ya tienes una cuenta, Ingresá con el siguiente link</span>
-        </Link>
     </div>
   )
 }
