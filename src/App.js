@@ -13,9 +13,11 @@ import Register from "./pages/register/Register";
 // FUNCION APP QUE CONTENDRA TODAS LAS RUTAS
 function App() {
   return (
+    // USAMOS EL CONTEXTO DEL USER 
     <UserContextProvider>
       <div className="App">
         <Navbar />
+        {/* USAMOS EL CONTEXTO QUE NOS VA A PROVEER LOS GIFS */}
         <GifsContextProvider>
           <Routes>
             <Route index path="/" element={<Home />} />

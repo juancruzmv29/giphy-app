@@ -1,25 +1,38 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import Button from "../../components/Button/Button";
 import Title from "../../components/Title/Title";
 import { UserContext } from "../../context/UserContext";
-import "./Login.scss"
-import logo from "../../assets/logo.png"
+import "./Login.scss";
+import logo from "../../assets/logo.png";
+import { useForm } from "react-hook-form";
+import FormInput from "../../components/FormInput/FormInput";
+import { errorsFirebase } from "../../utils/errorsFirebase";
+import { formValidate } from "../../utils/formValidate";
+import FormError from "../../components/FormError/FormError";
 
 // PÁGINA DONDE NOS VAMOS A PODER LOGUEAR CON NUESTRO EMAIL O POR GITHUB O GOOGLE o APPLE
 const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  // INVOCAMOS USENAVIGATE
   const navigate = useNavigate();
+  // INVOCAMOS LAS FUNCIONES DE USE FORM
+  const {
+    register,
+    setError,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+  // INVOCAMOS FORMVALIDATE Y LO QUE RETORNA
+  const { required, maxLength, minLength, pattern } = formValidate();
+  // INVOCAMOS LAS FUNCIONES DE LOGIN DEL USERCONTEXT
   const { loginUserEmail, loginUserGoogle, setLoading, loading } =
     useContext(UserContext);
 
-    // FUNCION PARA LOGUEARSE CON EMAIL Y CONTRASEÑA
-  const handleLoginEmail = async (e) => {
-    e.preventDefault();
+  // FUNCION PARA LOGUEARSE CON EMAIL Y CONTRASEÑA
+  const onSubmit = async (data) => {
     setLoading(true);
     try {
-      await loginUserEmail(email, password);
+      await loginUserEmail(data.email, data.password);
       navigate("/");
     } catch (error) {
       console.log(error.code);
@@ -36,50 +49,55 @@ const Login = () => {
       navigate("/");
     } catch (error) {
       console.log(error.code);
+      const { code, message } = errorsFirebase();
+      setError(code, {
+        message: message,
+      });
     } finally {
       setLoading(false);
     }
   };
 
-  //FUNCION PARA CAMBIAR EL VALOR DEL ONCHANGE DE EL EMAIL
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value);
-  };
-
-  // FUNCION PARA CAMBIAR EL VALOR DEL ONCHANGE DE EL PASSWORD
-  const handlePassChange = (e) => {
-    setPassword(e.target.value);
-  };
-
   return (
     <div className="container">
+      {/* TITULO */}
       <Title title="Login" />
-
-      <form onSubmit={handleLoginEmail}>
-        <input
-          type="text"
-          onChange={handleEmailChange}
-          value={email}
-          placeholder="Ingresa tu email"
-        />
-        <input
+      {/* FORMULARIO PARA LOGUEARNOS */}
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <FormInput
+          type="email"
+          placeholder="Ingrese su email"
+          label="Email"
+          error={errors.email}
+          {...register("email", { required: required, pattern: pattern })}
+        >
+          <FormError error={errors.email} />
+        </FormInput>
+        <FormInput
           type="password"
-          onChange={handlePassChange}
-          value={password}
-          placeholder="Ingresa tu contraseña"
-        />
-
+          placeholder="Ingrese su contraseña"
+          label="contraseña"
+          error={errors.password}
+          {...register("password", {
+            required: required,
+            maxLength: maxLength,
+            minLength: minLength,
+            pattern: pattern,
+          })}
+        >
+          <FormError error={errors.email} />
+        </FormInput>
         <Button text={loading ? "Ingresando..." : "Ingresar"} />
       </form>
 
       {/* ACA HABRIA QUE HACER UN BEFORE O AFTER */}
       <span>O ingresa desde tu cuenta de Google</span>
-
+      
+      {/* BOTON PARA LOGUEARNOS CON GOOGLE */}
       <button className="button_google" onClick={handleLoginGoogle}>
         <h3>Ingresa desde Google</h3>
         <img className="logo" src={logo} alt="Google" />
       </button>
-
     </div>
   );
 };

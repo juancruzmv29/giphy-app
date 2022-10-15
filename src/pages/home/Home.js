@@ -5,6 +5,7 @@ import "./Home.scss"
 // PÁGINA DEL HOME DONDE APARACERAN TODOS LOS GIFS, Y LAS TENDENCIAS Y TAMBIEN DONDE PODREMOS BUSCAR GIFS
 const Home = () => {
 
+    // ESTADO PARA EL INPUT DE LA BUSQUEDA DE DETERMINADOS GIFS
     const [search, setSearch] = useState("")
 
     // PARA CAMBIAR EL VALOR DE LO QUE VAMOS A BUSCAR
@@ -25,15 +26,18 @@ const Home = () => {
         {/* FORMULARIO PARA BUSCAR LOS GIFS ESPECIFICOS */}
         <form onSubmit={handleSearchSubmit} >
             <input type="text" onChange={handleChange} value={search} placeholder="Busca gifs" />
+            <button>Buscar</button>
         </form>
 
         {/* DONDE VAN A ESTAR LOS GIFS Y LAS TENDENCIAS */}
         <div>
+            {/* ASIDE DONDE VAN A ESTAR LAS TENDENCIAS */}
+            <aside></aside>
+
             {/* TODOS LOS GIFS */}
             <div></div>
 
-            {/* ASIDE DONDE VAN A ESTAR LAS TENDENCIAS */}
-            <aside></aside>
+            
         </div>
         
     </div>
