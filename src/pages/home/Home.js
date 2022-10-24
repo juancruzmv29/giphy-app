@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 import Title from '../../components/Title/Title'
 import "./Home.scss"
 
@@ -6,35 +7,25 @@ import "./Home.scss"
 const Home = () => {
 
     // ESTADO PARA EL INPUT DE LA BUSQUEDA DE DETERMINADOS GIFS
-    const [search, setSearch] = useState("")
-
-    // PARA CAMBIAR EL VALOR DE LO QUE VAMOS A BUSCAR
-    const handleChange = (e) => {
-        setSearch(e.target.value)
-    }
-
-    // PARA CUANDO ENVIAMOS EL FORMULARIO PARA BUSCAR LOS GIFS ESPECIFICOS
-    const handleSearchSubmit = (e) => {
-        e.preventDefault()
-    }
+    const [tendencies, setTendencies] = useState([])
 
   return (
     <div>
         {/* TITULO */}
         <Title title="Giphy App" />
 
-        {/* FORMULARIO PARA BUSCAR LOS GIFS ESPECIFICOS */}
-        <form onSubmit={handleSearchSubmit} >
-            <input type="text" onChange={handleChange} value={search} placeholder="Busca gifs" />
-            <button>Buscar</button>
-        </form>
+        {/* BOTONES PARA IR A BUSCAR GIFS O STICKERS */}
+        <div className='buttons'>
+            <Link to="/gifs" className='button_1' ><button>Buscar Gifs</button></Link>
+            <Link to="/stickers" className='button_1' ><button>Buscar Gifs</button></Link>
+            
+        </div>
 
         {/* DONDE VAN A ESTAR LOS GIFS Y LAS TENDENCIAS */}
         <div>
-            {/* ASIDE DONDE VAN A ESTAR LAS TENDENCIAS */}
-            <aside></aside>
 
-            {/* TODOS LOS GIFS */}
+            <h3>Tendencies</h3>
+            {/* DONDE VAN A ESTAR LAS TENDENCIAS */}
             <div></div>
 
             

@@ -1,14 +1,15 @@
-form {
+.buttons {
     display: flex;
     justify-content: center;
+    gap: .4rem;
 
-
-    input {
-        padding: .3rem .6rem;
-        border-radius: 30px;
-        color: black;
-        outline: none;
-        font-size: 1.1rem;
-        border: 1px solid grey;
+    .button_1 {
+        width: 100%;
     }
+}
+
+
+h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2rem;
 }

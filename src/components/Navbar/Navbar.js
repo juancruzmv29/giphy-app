@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { UserContext } from "../../context/UserContext";
 import "./Navbar.scss";
@@ -28,6 +28,12 @@ const Navbar = () => {
         <Link className="navbar_link" to="/favorites">
           Favorites
         </Link>
+        <Link className="navbar_link" to="/gifs">
+          Gifs
+        </Link>
+        <Link className="navbar_link" to="/stickers">
+          Stickers
+        </Link>
         <button onClick={handleLogout}>Logout</button>
       </div>
     );
@@ -44,6 +50,12 @@ const Navbar = () => {
         </Link>
         <Link className="navbar_link" to="/register">
           Register
+        </Link>
+        <Link className="navbar_link" to="/gifs">
+          Gifs
+        </Link>
+        <Link className="navbar_link" to="/stickers">
+          Stickers
         </Link>
       </div>
     );
